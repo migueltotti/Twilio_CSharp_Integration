@@ -1,0 +1,6 @@
+@URA_Twilio_HostAddress = http://localhost:5108
+
+GET {{URA_Twilio_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
