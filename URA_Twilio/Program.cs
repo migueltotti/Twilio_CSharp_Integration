@@ -1,27 +1,27 @@
+using URA_Twilio.Gateways;
+
 dotenv.net.DotEnv.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(5001); // Escuta em todas as interfaces na porta 5000
+    options.ListenAnyIP(5001);
 });
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IRetellGateway, RetellGateway>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
