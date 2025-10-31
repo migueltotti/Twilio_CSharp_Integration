@@ -1,4 +1,5 @@
 using URA_Twilio.Gateways;
+using URA_Twilio.Service;
 
 dotenv.net.DotEnv.Load();
 
@@ -15,6 +16,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IRetellGateway, RetellGateway>();
+builder.Services.AddSingleton<IRetellService, RetellService>();
 
 var app = builder.Build();
 
